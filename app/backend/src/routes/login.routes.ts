@@ -1,8 +1,10 @@
-// import { Router } from 'express';
-// import { validateLogin, validateEmail, validatePassword } from '../middlewares/validateLoginFields';
-// // import LoginController from '../controller/LoginControllers';
+import { Router } from 'express';
+import { validateLogin, validateEmail, validatePassword } from '../middlewares/validateLoginFields';
+import LoginController from '../controller/LoginControllers';
 
-// const loginRouter = Router();
-// const loginController = new LoginController();
+const loginRouter = Router();
+const loginController = new LoginController();
 
-// loginRouter.post('/', validateLogin, validateEmail, validatePassword, loginController.login);
+loginRouter.post('/', validateLogin, validateEmail, validatePassword, loginController.login);
+
+export default loginRouter;
