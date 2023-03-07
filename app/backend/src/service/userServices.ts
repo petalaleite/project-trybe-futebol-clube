@@ -9,4 +9,9 @@ export default class UserService {
     }
     return null;
   };
+
+  getById = async (id: number) => {
+    const user = await User.findByPk(id);
+    return user;
+  };
 }
