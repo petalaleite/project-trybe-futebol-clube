@@ -9,4 +9,23 @@ export default class MatchServices {
     ] });
     return matches;
   };
+
+  getInProgressMatches = async () => {
+    const inProgress = await Match.findAll({ where: { inProgress: true },
+      include: [
+        { model: Team, as: 'homeTeam' },
+        { model: Team, as: 'awayTeam' },
+      ] });
+
+    return inProgress;
+  };
+
+  getFinishedMatches = async () => {
+    const finished = await Match.findAll({ where: { inProgress: false },
+      include: [
+        { model: Team, as: 'homeTeam' },
+        { model: Team, as: 'awayTeam' },
+      ] });
+    return finished;
+  };
 }
