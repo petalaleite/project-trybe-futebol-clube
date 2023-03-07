@@ -17,7 +17,7 @@ export default class MatchController {
     }
     const matches = await this.matchService.getAllMatches();
     return res.status(200).json(matches);
-    // corrigir depois: ok no teste. entretanto quando não é passado nenhum parâmetro, ou null ou undefined na query ele retorna o inprogress: false.
+    // corrigir depois: ok no teste. entretanto, quando não é passado nenhum parâmetro, ou null ou undefined na query ele retorna o inprogress: false.
   };
 
   updateMatch = async (req: Request, res: Response) => {
@@ -26,4 +26,14 @@ export default class MatchController {
     await this.matchService.updateMatch(Number(id), homeTeamGoals, awayTeamGoals);
     return res.status(OK).json({ message: 'Successfully updated!' });
   };
+
+  updateFinishedMatch = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    await this.matchService.updateFinishedMatch(Number(id));
+    return res.status(OK).json({ message: 'Finished' });
+  };
+
+  // createMatch = async (req: Request, res: Response) => {
+
+  // };
 }

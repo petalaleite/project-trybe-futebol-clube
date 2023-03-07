@@ -37,4 +37,10 @@ export default class MatchServices {
     console.log(updatedMatch, 'updatedmatch no service');
     return updatedMatch;
   };
+
+  updateFinishedMatch = async (id: number) => {
+    const updateFinished = await Match.update({ inProgress: false }, {
+      where: { id } });
+    return updateFinished;
+  };
 }
