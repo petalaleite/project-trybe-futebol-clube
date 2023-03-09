@@ -43,4 +43,19 @@ export default class MatchServices {
       where: { id } });
     return updateFinished;
   };
+
+  createMatch = async (
+    homeTeamId: number,
+    awayTeamId: number,
+    homeTeamGoals: number,
+    awayTeamGoals: number,
+  ) => {
+    const createdMatch = await Match.create({
+      homeTeamId,
+      awayTeamId,
+      homeTeamGoals,
+      awayTeamGoals,
+      inProgress: 'true' });
+    return createdMatch;
+  };
 }

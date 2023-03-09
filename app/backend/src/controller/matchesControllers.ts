@@ -33,7 +33,14 @@ export default class MatchController {
     return res.status(OK).json({ message: 'Finished' });
   };
 
-  // createMatch = async (req: Request, res: Response) => {
-
-  // };
+  createMatch = async (req: Request, res: Response) => {
+    const { homeTeamId, awayTeamId, homeTeamGoals, awayTeamGoals } = req.body;
+    const matchCreated = await this.matchService.createMatch(
+      homeTeamId,
+      awayTeamId,
+      homeTeamGoals,
+      awayTeamGoals,
+    ); // o certo é fazer uma interface
+    res.status(201).json(matchCreated);
+  };
 }
