@@ -34,7 +34,6 @@ export default class MatchServices {
     const updatedMatch = await Match.update({ homeTeamGoals, awayTeamGoals }, {
       where: { id },
     });
-    console.log(updatedMatch, 'updatedmatch no service');
     return updatedMatch;
   };
 
