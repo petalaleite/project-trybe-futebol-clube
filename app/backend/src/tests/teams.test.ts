@@ -15,6 +15,5 @@ describe('Teste de integração a rota teams', function () {
 
   afterEach(function () {
     sinon.restore()
-
   })
 })
