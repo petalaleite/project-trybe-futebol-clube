@@ -8,15 +8,22 @@ const { expect } = chai;
 
 describe('Teste de integração da rota /login', function () {
   it('A rota /login devolve um erro de "Bad Request" ao tentar fazer um post sem corpo de requisição', async function () {
-    const result = await chai.request(app).post('/login').send()
+    const result = await chai.request(app).post('/login').send({})
     expect(result.status).to.be.equal(400)
   })
-   it('Retorna um erro quando a senha é menor que 6 caracteres', async function () {
+
+   it('Retorna um erro 401 quando a senha é menor que 6 caracteres', async function () {
     const invalidPassword = { email: 'admin@admin.com', password: '123'}
     const result = await chai.request(app).post('/login').send(invalidPassword)
     expect(result.status).to.be.equal(401)
    })
-   
+
+   it('Retorna um erro 401 quando o email da requisição é inválido', async function () {
+    const invalidEmail = { email: 'admin.admin.com', password: '123456' }
+    const result = await chai.request(app).post('/login').send(invalidEmail)
+    expect(result.status).to.be.equal(401)
+   })
+
   afterEach(function () {
     sinon.restore()
   })
