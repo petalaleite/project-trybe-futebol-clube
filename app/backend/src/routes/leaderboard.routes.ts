@@ -1,11 +1,13 @@
-// import { Router } from 'express';
+import { Router } from 'express';
+import LeaderboardController from '../controller/leaderboardControllers';
 
-// const leaderboardRouter = Router();
+const leaderboardRouter = Router();
+const leaderboardController = new LeaderboardController();
 
-// leaderboardRouter.get('/', leaderboardController.getAllleaderboard);
-// leaderboardRouter.get('/', leaderboardController);
+leaderboardRouter.get('/home', leaderboardController.getHomeLeaderboard);
+leaderboardRouter.get('/away', leaderboardController.getAwayLeaderboard);
 // leaderboardRouter.patch('/:id/finish', leaderboardController);
 // leaderboardRouter.patch('/:id', leaderboardController);
 // leaderboardRouter.post('/', leaderboardController);
 
-// export default leaderboardRouter;
+export default leaderboardRouter;
