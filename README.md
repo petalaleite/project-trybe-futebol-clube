@@ -10,7 +10,7 @@
 
 - `docker exec -it app_backend bash` em ./app/backend;
 
-- npm run build` no container do backend;
+- `npm run build` no container do backend;
 
 - `npm run db:reset` no container do backend;
 
